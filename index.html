@@ -2,68 +2,137 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>WebFG</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<title>La Fusée Gelée</title>
 </head>
 
 <body>
-  <h1>Web Fusée Launcher</h1>
-  <p>Fusee Launcher ported to JavaScript using WebUSB.</p>
-  <p>
-    Source can be found on <a href="https://github.com/atlas44/web-fusee-launcher">GitHub</a> (or by hitting view source, there is no backend!).
-    Ported from <a href="https://github.com/reswitched/fusee-launcher">fusee-launcher</a>.
-    Thanks to ktemkin and ReSwitched for Fusée Gelée and a ton of other things!
-  </p>
+	<h1>Fusée Gelée Web Launcher</h1>
+	<p>Fusée Launcher porté vers JavaScript en utilisant WebUSB, pour les Mac.</p>
+	<p>
+		Source du projet : <a href="https://github.com/Bechamelloww/web-fusee-launcher">GitHub</a><br>
+		Ceci est un fork stylé du projet d'atlas44 (pour mon utilisation personnelle) : <a
+			href="https://github.com/atlas44/web-fusee-launcher"></a><br>
+		Merci beaucoup à <b>atlas44</b>, <b>ktemkin</b> et <b>ReSwitched</b> pour Fusée Gelée et tant d'autres choses !
+	</p>
 
-  <p>
-    <h4>Instructions:</h4>
-    <ol>
-      <li>Put the Switch in RCM, and connect it to your device.</li>
-      <li>Select either the example payload, or upload one.</li>
-      <li>Press 'Do the thing!'</li>
-      <li>On the consent screen that appears, select 'APX' and hit confirm.</li>
-      <li>If all goes well, the payload will launch!</li>
-    </ol>
-  </p>
+	<!-- From Uiverse.io by catraco -->
+	<label class="container" for="themeToggle">
+		<input checked="checked" type="checkbox" id="themeToggle">
+		<svg viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="moon">
+			<path
+				d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z">
+			</path>
+		</svg>
+		<svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="sun">
+			<path
+				d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z">
+			</path>
+		</svg>
+	</label>
 
-  <p>
-    <h4>Random stuff:</h4>
-    <ul>
-      <li>This is pretty poorly tested. I just kind wrote it and whatever. I'm not responsible if anything goes wrong!</li>
-      <li>This does NOT work on Windows due to a limitation in the Chrome implementation of WebUSB (and probably other reasons!)</li>
-      <li>This does NOT currently work on any browser but Chrome, because they don't implement WebUSB.</li>
-      <li>On Linux, you might get an access denied error!
-        If you do, you can try creating a file at <code>/etc/udev/rules.d/50-switch.rules</code>
-        <div>With the following contents:</div>
-        <div><code>SUBSYSTEM=="usb", ATTR{idVendor}=="0955", MODE="0664", GROUP="plugdev"</code></div>
-      </li>
-      <li>This has been tested and appears to work on Linux, OSX, Android (unrooted) and Chromebooks. Your mileage may vary.</li>
-    </ul>
-  </p>
+	<p>
+	<h4>Instructions</h4>
+	<ol>
+		<li>Mettez votre Switch en mode RCM, puis connectez-la à votre appareil.</li>
+		<li>Vous pouvez ensuite choisir d'utiliser soit le payload d'exemple (fusée 1.8.0), soit un que vous uploadez
+			vous-même.</li>
+		<li>Cliquez sur 'Lancement de la fusée aberrante !'.</li>
+		<li>Sur la fenêre de dialogue qui apparaît, sélectionnez 'APX' et confirmez.</li>
+		<li>Si tout se passe bien, le payload devrait s'injecter!</li>
+	</ol>
+	</p>
 
-  <h3>Payload:</h3>
-  <div>
-    <form id="mainForm">
-      <p>
-        <input type="radio" name="payload" id="fusee.bin" value="fusee.bin" checked>
-        <label for="fusee.bin">Example payload (fusee.bin)</label>
-      </p>
+	<p>
+	<h4>Trucs chelous</h4>
+	<ul>
+		<li>Ça n'a pas été beaucoup testé. Atlas44 a juste écrit le code pour que ça marche et voilà. Je ne suis pas
+			responsable si quelque chose se passe mal !</li>
+		<li>Ça ne <b>FONCTIONNE PAS</b> sur <b>Windows</b> à cause des limitations pour l'implémentation dans Chrome de
+			WebUSB (et sûrement d'autres raisons).</li>
+		<li>Ça ne fonctionne <b>QUE sur Chrome</b> (car c'est le seule ou presque à implémenter WebUSB).</li>
+		<li>Sur beaucoup de distributions Linux, vous purriez rencontrer une erreur.
+			Si c'est le cas, créez ce fichier : <code>/etc/udev/rules.d/50-switch.rules</code>
+			<div>Écrivez à l'intérieur :</div>
+			<div><code>SUBSYSTEM=="usb", ATTR{idVendor}=="0955", MODE="0664", GROUP="plugdev"</code></div>
+		</li>
+		<li>Normalement ça devrait fonctionner sur MacOS, OSX, Linux, ainsi qu'Android (non root) et les Chromebooks.
+		</li>
+	</ul>
+	</p>
 
-      <p>
-        <input type="radio" name="payload" id="uploaded" value="uploaded">
-        <label for="uploaded">Upload payload:</label>
-        <input type="file" id="payloadUpload">
-      </p>
-    </form>
+	<h3>Payload</h3>
+	<div>
+		<form id="mainForm">
+			<p>
+				<input type="radio" name="payload" id="fusee.bin" value="fusee.bin" checked>
+				<label for="fusee.bin">Payload d'exemple (fusée.bin)</label>
+			</p>
 
-    <button id="goButton">Do the thing!</button>
-  </div>
+			<p>
+				<input type="radio" name="payload" id="uploaded" value="uploaded">
+				<label for="uploaded">Uploader un payload :</label>
+				<input type="file" id="payloadUpload">
+			</p>
+		</form>
 
-  <h3>Result:</h3>
-  <textarea cols="80" rows="12" id="output"></textarea>
+		<button class="rocket-button" type="submit" id="goButton">
+			<div class="default">Lancement !</div>
+			<div class="success">
+				<svg>
+					<use xlink:href="#check">
+				</svg>
+				<div></div>
+			</div>
+			<div class="animation">
+				<div class="rocket">
+					<svg>
+						<use xlink:href="#rocket">
+					</svg>
+				</div>
+				<div class="smoke">
+					<i></i><i></i><i></i><i></i><i></i><i></i>
+				</div>
+			</div>
+		</button>
 
-  <script src="./fusee.bin.js"></script>
-  <script src="./main.js"></script>
+		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+			<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 11" id="check">
+				<polyline stroke="currentColor" points="1 5.5 5 9.5 12 1.5"></polyline>
+			</symbol>
+			<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 36" id="rocket">
+				<path
+					d="M12,0 C18.6666667,8.70175439 19.7777778,19.0350877 15.3333333,31 L8.66666667,31 C4.22222222,19.0350877 5.33333333,8.70175439 12,0 Z"
+					fill="var(--rocket)"></path>
+				<path
+					d="M12,0 C5.33333333,8.70175439 4.22222222,19.0350877 8.66666667,31 C6.72222222,17.9473684 7.83333333,7.61403509 12,0 Z"
+					fill="var(--rocket-shadow-left)"></path>
+				<path
+					d="M12,0 C18.6666667,8.70175439 19.7777778,19.0350877 15.3333333,31 C17.2777778,17.9473684 16.1666667,7.61403509 12,0 Z"
+					fill="var(--rocket-shadow-right)"></path>
+				<path
+					d="M22.2399372,27.25 C21.2403105,25.558628 19.4303122,23.808628 16.21,22 L15,31 L17.6512944,31 C18.2564684,31 18.8216022,31.042427 19.1572924,31.5292747 L21.7379379,35.271956 C22.0515593,35.7267976 22.5795404,36 23.1449294,36 C23.5649145,36 23.9142153,35.7073938 23.9866527,35.3215275 L24,35.146217 L23.9987214,35.1196135 C23.7534506,31.4421183 23.1671892,28.8189138 22.2399372,27.25 Z"
+					fill="var(--rocket-wing-right)"></path>
+				<path
+					d="M1.76006278,27.25 C2.75968951,25.558628 4.56968777,23.808628 7.79,22 L9,31 L6.34870559,31 C5.74353157,31 5.17839777,31.042427 4.84270762,31.5292747 L2.2620621,35.271956 C1.94844071,35.7267976 1.42045963,36 0.855070627,36 C0.435085457,36 0.0857846604,35.7073938 0.0133472633,35.3215275 L0,35.146217 L0.00127855763,35.1196135 C0.24654935,31.4421183 0.832810758,28.8189138 1.76006278,27.25 Z"
+					fill="var(--rocket-wing-left)"></path>
+				<circle fill="var(--rocket-window-shadow)" cx="12" cy="12" r="3"></circle>
+				<circle fill="var(--rocket-window)" cx="12" cy="12" r="2.5"></circle>
+				<path
+					d="M15.6021597,5.99977504 L8.39784027,5.99977504 C8.54788101,5.6643422 8.70496315,5.3309773 8.86908669,4.99968036 L15.1309133,4.99968036 C15.2950369,5.3309773 15.452119,5.6643422 15.6021597,5.99977504 Z"
+					fill-opacity="0.3" fill="var(--rocket-line)"></path>
+			</symbol>
+		</svg>
+
+	</div>
+
+	<h3>Résultat</h3>
+	<textarea cols="80" rows="12" id="output" readonly></textarea>
+
+	<script src="./fusee.bin.js"></script>
+	<script src="./main.js"></script>
+	<script src='http://www.devanswer.com/codes/files/charming@latest.js'></script>
 </body>
-
 </html>
